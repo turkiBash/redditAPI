@@ -1,25 +1,19 @@
-fetch("https://www.reddit.com/.json")
-  .then((response) => {
-    console.log(response);
-    return response.json();
-  })
+fetch("https://www.reddit.com/r/Overwatch/.json")
+  .then((response) => response.json())
   .then((data) => {
-    console.log(data.data);
-    document.getElementById("myData").innerHTML = JSON.stringify(
-      data.data,
-      null,
-      2
-    );
+    console.log(data);
     const threads = data.data.children;
-
-    threads.forEach((modhash, dist, children,) => {
-      const data = thread.data.kind;
-
-      console.log(threads);
-
-      document.getElementById("thread list").innerHTML = JSON.stringify(thread.data.kind,null,2);
-    });
-  })
-  .catch((err) => {
-    console.log(err);
+    for (var i = 0; i < threads.length; i++) {
+      //console.log(threads[i].data);
+      console.log(threads[i].data.title);
+      //let html = `<ol>${threads.title}</ol>`;
+      var html1 = document.createElement("p", "a");
+      var node = document.createTextNode(
+        threads[i].data.title,
+        threads[i].data.url
+      );
+      html1.appendChild(node);
+      var element = document.getElementById("thread-list");
+      element.appendChild(html1);
+    }
   });
