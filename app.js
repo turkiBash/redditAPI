@@ -5,24 +5,23 @@ fetch("https://www.reddit.com/r/Overwatch/.json")
     console.log(data);
 
     const threads = data.data.children;
-
-    for (var i = 0; i < threads.length; i++) {
-      console.log(threads[i].data);
-
-      console.log(threads[i].data.title);
-
-      console.log(threads[i].data.url);
-
-      const html1 = document.createElement("a");
-
-      html1.setAttribute("href", threads[i].data.url);
-
-      const node = document.createTextNode(threads[i].data.title);
-
-      html1.appendChild(node);
-
-      const element1 = document.getElementById("thread-list");
-
-      element1.appendChild(html1);
-    }
+    threads.forEach((threads) => {
+      console.log(threads.data);
+      threads = `
+      <div id="${threads.data.name}">
+          <img src="${threads.data.thumbnail}">
+          <br>
+        <a href=" ${threads.data.url}" >${threads.data.title}</a>
+          <button id="${threads.data.ups}">Up
+          </button>
+            <span>${threads.data.score}</span>
+          <button id="${threads.data.downs}">Down
+          </button>   
+          <br>   
+          <video poster="${threads.data.secure_media}"width="320" height="240" controls>
+          </video>
+      </div>
+      `;
+      document.getElementById("thread-list").innerHTML += threads;
+    });
   });
