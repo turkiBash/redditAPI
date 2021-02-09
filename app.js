@@ -1,27 +1,34 @@
-fetch("https://www.reddit.com/r/Overwatch/.json")
-  .then((response) => response.json())
 
-  .then((data) => {
-    console.log(data);
-
-    const threads = data.data.children;
-    threads.forEach((threads) => {
-      console.log(threads.data);
-      threads = `
-      <div id="${threads.data.name}">
+            fetch("https://www.reddit.com/r/Overwatch/.json?after=")
+                .then((response) => response.json())
+                .then((data) => {
+                    const pages = data.data;
+                    console.log(pages.after)
+                    const threads = data.data.children;
+                    threads.forEach((threads) => {
+                        threads = `
+          <div id="thread-list">
           <img src="${threads.data.thumbnail}">
           <br>
         <a href=" ${threads.data.url}" >${threads.data.title}</a>
-          <button id="${threads.data.ups}">Up
+          <button class="up-vote" id="${threads.data.ups}">Up
           </button>
-            <span>${threads.data.score}</span>
-          <button id="${threads.data.downs}">Down
-          </button>   
-          <br>   
-          <video poster="${threads.data.secure_media}"width="320" height="240" controls>
-          </video>
-      </div>
+            <span class="score" id="all-vote">${threads.data.score}</span>
+          <button class="down-vote" id="${threads.data.downs}">Down
+          </button>
+          <br> 
       `;
-      document.getElementById("thread-list").innerHTML += threads;
-    });
-  });
+                        document.getElementById("thread-list").innerHTML += threads;
+
+
+                        const button = document.getElementById('show-more-btn');
+                        button.onclick = (click) => {
+                            window.location.assign(`https://www.reddit.com/r/Overwatch/?after=` + `${pages.after}`
+                            );
+
+                        }
+                    })
+                });
+
+
+

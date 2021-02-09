@@ -1,4 +1,75 @@
 * {
-  margin: o;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
+  align-content: center;
+}
+
+#thread-list {
+  border-top: 1px solid rgb(177, 177, 177);
+  border-bottom: 1px solid rgb(177, 177, 177);
+  border-end-end-radius: 15px;
+  padding-inline: 15px;
+  margin: 0;
+  padding: 10px;
+  justify-content: center;
+  text-align: left;
+  text-decoration: none;
+  background-color: rgb(255, 255, 255);
+}
+
+a {
+  text-decoration: none;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: 0.05rem;
+  padding: 10px;
+  font-family: "Sora", sans-serif;
+  font-size: 15px;
+  color: black;
+}
+
+a:hover {
+  background-color: rgba(194, 194, 194, 0.445);
+  color: blue;
+}
+
+.div {
+  width: 350px;
+  height: 150px;
+  margin: 10px;
+  padding: 25px;
+  border: 5px solid black;
+}
+
+img {
+  size: 100%;
+  padding: 1rem;
+  border-radius: 35px;
+}
+
+button {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #4eb5f1;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #4095c6;
+}
+
+a#next-page,
+a#previous-page {
+  color: #c640b0;
+  justify-content: center;
+  text-align: center;
 }
