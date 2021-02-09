@@ -8,7 +8,7 @@
                     threads.forEach((threads) => {
                         threads = `
           <div id="thread-list">
-          <img src="${threads.data.thumbnail}">
+          <img src="${threads.data.thumbnail}" alt="">
           <br>
         <a href=" ${threads.data.url}" >${threads.data.title}</a>
           <button class="up-vote" id="${threads.data.ups}">Up
